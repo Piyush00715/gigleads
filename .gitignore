@@ -17,10 +17,11 @@ build/
 # ========================
 .env
 .env.local
+.env.development
 .env.development.local
 .env.test.local
 .env.production.local
-# Keep .env.example and .env.development committed for reference
+# Keep .env.example committed as a template
 !.env.example
 
 # ========================
