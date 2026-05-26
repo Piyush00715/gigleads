@@ -39,8 +39,8 @@ export default function Login() {
     setLoading(true);
     try {
       const response = await api.post('/auth/login', data);
-      const user = response.data.data.user;
-      login(user);
+      const { user, token } = response.data.data;
+      login(user, token);
       toast.success('Logged in successfully!');
       navigate('/', { replace: true });
     } catch (err: any) {

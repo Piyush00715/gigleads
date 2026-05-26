@@ -44,8 +44,8 @@ export default function Register() {
     setLoading(true);
     try {
       const response = await api.post('/auth/register', data);
-      const user = response.data.data.user;
-      login(user);
+      const { user, token } = response.data.data;
+      login(user, token);
       toast.success('Account registered successfully!');
       navigate('/', { replace: true });
     } catch (err: any) {

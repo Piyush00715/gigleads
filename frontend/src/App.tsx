@@ -24,11 +24,16 @@ export default function App() {
     // Sync UI with stored or system theme preferences
     initializeTheme();
 
-    // Verify if active HttpOnly cookie session exists on load
+    // Verify if active session exists on load
     const verifySession = async () => {
+      const token = localStorage.getItem('token');
+      if (!token) {
+        logout();
+        return;
+      }
       try {
         const response = await api.get('/auth/me');
-        login(response.data.data.user);
+        login(response.data.data.user, token);
       } catch (err) {
         logout();
       } finally {
